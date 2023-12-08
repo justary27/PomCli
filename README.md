@@ -1,7 +1,7 @@
 # PomCli
 `A pom.xml CLI parser for your GitHub repos.`
 
-A Command Line Interface application that uses GitHub app capabilities to search and parse the `pom.xml` files in the user's repositories. Parsed results show the dependencies in that pom file.
+A Command Line Interface application that uses [GitHub app](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/differences-between-github-apps-and-oauth-apps) capabilities to search and parse the `pom.xml` files in the user's repositories. Parsed results show the dependencies in that pom file.
 
 ## Setup
 
@@ -52,3 +52,7 @@ python ./run.py
 
 ![ExitUsage](https://github.com/just-ary27/PomCli/assets/76696648/03a701c4-55a8-4388-9187-0e3eb77827af)
 
+## Future Ideas
+- [Add refresh token logic to the login function.](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/refreshing-user-access-tokens)
+- Fix the help function.
+- Print the selected `pom.xml` file.
