@@ -21,10 +21,28 @@ python ./run.py
 
 - `login`: The login command, logs the user via the github device code OAuth sevice.
 - `listRepos`: The listRepos command, lists all the repositories of the currently logged in user.
+
+![listReposUsage](https://github.com/just-ary27/PomCli/assets/76696648/5bd2a03f-e289-477b-8969-69195577ddc4)
+
 - `selectRepo`: The selectRepo command, selects one of the repositories to search for pom.xml files in it.
-- `searchPom`: The searchPom command, searches and lists all the pom.xml files in the currently selected the repository.
+
+![selectRepoUsage](https://github.com/just-ary27/PomCli/assets/76696648/b3011c62-adf4-462c-a201-676ad8bdb597)
+
+- `searchPom`: The searchPom command, searches and lists all the pom.xml files in the currently selected repository.
+
+![searchPomUsage](https://github.com/just-ary27/PomCli/assets/76696648/fbf05534-dc51-4146-a960-51d379470014)
+
 - `listPomDep`: The listPomDep command, lists all the dependencies of the currently selected pom.xml file in the currently selected repository.
+
+![listDPomDep](https://github.com/just-ary27/PomCli/assets/76696648/6c9eb4ac-64f4-4b2f-8735-ae6bb660648a)
+
 - `clear`: Clears the terminal
 - `..`: Goes to previous level command.
+
+![,,Usage](https://github.com/just-ary27/PomCli/assets/76696648/c4a2226b-6661-4c97-a11d-0092cb8fa68c)
+
 - `logout`: Logs out the current user.
 - `exit`: Exit from the PomCli.
+
+![ExitUsage](https://github.com/just-ary27/PomCli/assets/76696648/03a701c4-55a8-4388-9187-0e3eb77827af)
+
