@@ -44,7 +44,7 @@ python ./run.py
 
 ![,,Usage](https://github.com/just-ary27/PomCli/assets/76696648/c4a2226b-6661-4c97-a11d-0092cb8fa68c)
 
-- `logout`: Logs out the current user.
+- `logout`: Logs out the current user and exits from the CLI.
 
 ![logoutUsage](https://github.com/just-ary27/PomCli/assets/76696648/4544f335-aded-4ff8-9a3d-2d9d5825f333)
 
