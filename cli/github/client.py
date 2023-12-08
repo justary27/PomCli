@@ -99,7 +99,6 @@ class GitHubClient:
                 envfile.seek(0)
 
                 for line in lines:
-                    print(line)
                     if "USER_TOKEN" in line:
                         pass
                     elif "TOKEN_CREATION_TIME" in line:
