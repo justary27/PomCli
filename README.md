@@ -56,3 +56,6 @@ python ./run.py
 - [Add refresh token logic to the login function.](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/refreshing-user-access-tokens)
 - Fix the help function.
 - Print the selected `pom.xml` file.
+
+<hr>
+<div align=center>Made with ❤️ by <a href="https://justary27.web.app"><img src="https://user-images.githubusercontent.com/76696648/176264414-6b9a9549-cb25-41f3-9e00-d857bd8bd7cf.svg" alt="" height=40></a></div>
