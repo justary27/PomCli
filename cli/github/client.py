@@ -43,7 +43,7 @@ class GitHubClient:
                 print(f"\nPlease visit: \033[96m{verification_url}\033[0m")
                 print(f"And enter code \033[96m{user_code}\033[0m\n")
 
-                self.poll_for_token(self.client_id, device_code, interval)
+                return self.poll_for_token(self.client_id, device_code, interval)
 
         except Exception as e:
             print(e)
@@ -134,21 +134,25 @@ class GitHubClient:
                     case "expired_token":
                         poll = False
                         print("\033[91mThe device code has expired. Please run login again.\033[0m")
+                        return False
 
                     case "access_denied":
                         poll = False
                         print("\033[91mLogin cancelled by user\033[0m")
+                        return False
 
             else:
                 user_token = tokenResonse["user_token"]
+                self.authenticated = True
                 poll = False
 
                 with open(os.path.dirname(os.path.realpath(__file__)) + "/.env", "a") as envfile:
                     envfile.write(
-                        f"USER_TOKEN={user_token}\nTOKEN_CREATION_TIME={datetime.now().isoformat()}\n"
+                        f"\nUSER_TOKEN={user_token}\nTOKEN_CREATION_TIME={datetime.now().isoformat()}\n"
                     )
 
                 print("\033[92mLogged in successfully!\033[0m")
+                return True
 
     def check_token_validity(self) -> bool:
         if self.user_token and self.user_token_creation_time:

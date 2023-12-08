@@ -3,6 +3,9 @@ from abc import ABC, abstractmethod
 from cli.github.client import GitHubClient
 
 class Cli(ABC):
+    """
+    A blueprint class for a any GitHub app cli implementation.
+    """
     NAME:str
     VERSION:str
 

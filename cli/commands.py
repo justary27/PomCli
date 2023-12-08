@@ -19,9 +19,6 @@ class CliCommands:
                 else:
                     result = innerFunc(self, *args, **kwargs)
                     return result
-                
-            wrapper.__name__ = innerFunc.__name__
-            wrapper.__doc__ = innerFunc.__doc__
 
             return wrapper
     
@@ -35,14 +32,14 @@ class CliCommands:
         device code OAuth sevice.
         """
         if not self.cli_instance.authenticated:
-            self.cli_instance.github_client.login()
+            self.cli_instance.authenticated = self.cli_instance.github_client.login()
         else:
             print("You're already authenticated")
 
     @Decorators.Authenticate
     def listAllRepositories(self):
         """
-        The listRepos command, lists all the repositories 
+        The listRepos command, lists top 30 of all the repositories 
         of the currently logged in user.
         """
         self.cli_instance.save_stage()
@@ -54,9 +51,10 @@ class CliCommands:
 
         if len(repos) > 0:
             for i in range(len(repos)):
-                print(f"{i+1}. {repos[i].name}  {repos[i].description}")
+                print(f"{i+1}. \033[96m{repos[i].name}\033[0m  {repos[i].description}")
         else:
             print("\033[91mNo repos found for this user!\033[0m")
+            self.cli_instance.reset_stage()
 
     @Decorators.Authenticate
     def selectRepository(self):
@@ -104,6 +102,7 @@ class CliCommands:
                 print(tabulate(data, ["SNo.", "Name", "Path"], tablefmt="fancy_grid"))
             else:
                 print("\033[91mNo pom.xml files found for this repo!\033[0m")
+                self.cli_instance.reset_stage()
 
         else:
             print("You need to run selectRepo command first!")
@@ -130,6 +129,7 @@ class CliCommands:
                         print(tabulate(dependencies, "keys", tablefmt="fancy_grid"))
                     else:
                         print("\033[91mNo dependencies found for this file!\033[0m")
+                        self.cli_instance.reset_stage()
 
                 except (ValueError, IndexError):
                     print("\033[91mEnter a valid file number!\033[0m")
@@ -140,6 +140,9 @@ class CliCommands:
             self.cli_instance.reset_stage()
 
     def logout(self) -> bool:
+        """
+        The logout command, logs out the currently logged in user.
+        """
         logout_status = self.cli_instance.github_client.logout()
 
         if logout_status:
@@ -149,6 +152,7 @@ class CliCommands:
         
         return logout_status
 
+    # TODO: Not Implemented Properly
     def help(self):
         self.commands = [
             self.login, 
@@ -160,4 +164,3 @@ class CliCommands:
 
         for command in self.commands:
             print(f"{command.__name__}  {command.__doc__.strip()}")
-

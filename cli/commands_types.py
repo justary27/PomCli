@@ -1,6 +1,10 @@
 from enum import Enum
 
 class CliCommandsTypes(Enum):
+    """
+    Enumeration class for the various types of Commands 
+    available in PomCli.
+    """
     LOGIN = "login"
     LIST_REPOSITORIES = "listRepos"
     SELECT_REPOSITORY = "selectRepo"
