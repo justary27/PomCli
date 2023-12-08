@@ -1,7 +1,7 @@
 # PomCli
 `A pom.xml CLI parser for your GitHub repos.`
 
-A Command Line Interface application that uses GitHub app capabilities to search and parse the `pom.xml` files in user's repositories. Parsed results show the dependencies in that pom file.
+A Command Line Interface application that uses GitHub app capabilities to search and parse the `pom.xml` files in the user's repositories. Parsed results show the dependencies in that pom file.
 
 ## Setup
 
@@ -11,15 +11,18 @@ A Command Line Interface application that uses GitHub app capabilities to search
 ```bash
 pip install -r requirements.txt
 ```
-4. _(Optional) If you want to use the program as an executable run the `executable.sh` file, make sure to replace the path there!_
-4. Run the cli with the following command
+4. _(Optional) If you want to use the program as an executable, run the `executable.sh` file, make sure to replace the path there!_
+4. Run the CLI with the following command.
 ```bash
 python ./run.py
 ```
 
 ## Commands
 
-- `login`: The login command, logs the user via the github device code OAuth sevice.
+- `login`: The login command, logs the user via the github device code OAuth service.
+
+![loginUsage](https://github.com/just-ary27/PomCli/assets/76696648/75a23dd2-dd84-4f4f-81e2-79896ba64992)
+
 - `listRepos`: The listRepos command, lists all the repositories of the currently logged in user.
 
 ![listReposUsage](https://github.com/just-ary27/PomCli/assets/76696648/5bd2a03f-e289-477b-8969-69195577ddc4)
@@ -42,6 +45,9 @@ python ./run.py
 ![,,Usage](https://github.com/just-ary27/PomCli/assets/76696648/c4a2226b-6661-4c97-a11d-0092cb8fa68c)
 
 - `logout`: Logs out the current user.
+
+![logoutUsage](https://github.com/just-ary27/PomCli/assets/76696648/4544f335-aded-4ff8-9a3d-2d9d5825f333)
+
 - `exit`: Exit from the PomCli.
 
 ![ExitUsage](https://github.com/just-ary27/PomCli/assets/76696648/03a701c4-55a8-4388-9187-0e3eb77827af)
