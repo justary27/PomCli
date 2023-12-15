@@ -7,15 +7,36 @@ A Command Line Interface application that uses [GitHub app](https://docs.github.
 
 1. Create a GitHub app with scopes from repository read access and user info.
 2. Put the client id & secret as in the `.sample.env` file and rename it to `.env`
-3. Install the required dependencies
+
+### Run with global python installation
+- Install the required dependencies
 ```bash
 pip install -r requirements.txt
 ```
-4. _(Optional) If you want to use the program as an executable, run the `executable.sh` file, make sure to replace the path there!_
-4. Run the CLI with the following command.
+- Run the CLI with the following command.
+
+```bash
+# Linux/macOS
+python3 ./run.py 
+```
+
+### Run within enivronment
+- Create and activate environment pom_cli
+
+```bash
+# Linux/macOS
+python3 -m venv pom_cli
+source ./pom_cli/bin/activate
+```
+
+- Run the CLI with the following command.
+
 ```bash
 python ./run.py
 ```
+
+### (Bonus) Run as an executable
+- _(Optional) If you want to use the program as an executable, run the `executable.sh` file, make sure to replace the path there!_
 
 ## Commands
 
