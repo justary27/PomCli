@@ -1,8 +1,6 @@
-from enum import Enum
-
-class ApiEndpoints(Enum):
+class ApiEndpoints:
     """
-    Enumeration class to store the enpoints accessed by the CLI.
+    Class to store the enpoints accessed by the CLI.
     """
 
     DEVICE_CODE = "https://github.com/login/device/code"

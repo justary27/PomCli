@@ -1,15 +1,15 @@
 import json
 import requests
 
-from cli.github.pomfile import PomFile
-from cli.github.repository import Repository
-from cli.github.endpoints import ApiEndpoints
+from models.github.pomfile import PomFile
+from models.github.repository import Repository
+from config.endpoints import ApiEndpoints
 
 
-class ApiClient:
+class GitHubApiClient:
     """
-    The class based client that uses requests HTTP requests 
-    to hit GitHub's API.
+    The class based client that uses HTTP requests 
+    to hit GitHub's REST API.
     """
 
     @staticmethod
@@ -18,12 +18,13 @@ class ApiClient:
         Request a device_code to start the auth process.
         """
         response = requests.post(
-            ApiEndpoints.DEVICE_CODE.value,
+            ApiEndpoints.DEVICE_CODE,
             json={
               "client_id": client_id,  
             },
             headers= {"Accept": "application/json"}
         )
+        print(client_id)
         if response.ok:
             parsed_reponse = json.loads(response.text)
             return {
@@ -42,7 +43,7 @@ class ApiClient:
         device_code.
         """
         reponse = requests.post(
-            ApiEndpoints.ACCESS_TOKEN.value, 
+            ApiEndpoints.ACCESS_TOKEN, 
             json={
                 "client_id": client_id,
                 "device_code": device_code,
@@ -53,6 +54,7 @@ class ApiClient:
 
         if reponse.ok:
             parsed_response = json.loads(reponse.text)
+            print(parsed_response)
 
             if "access_token" not in parsed_response:
                 return {
@@ -70,6 +72,8 @@ class ApiClient:
     
     @staticmethod
     def refresh_user_token():
+        """
+        """
         pass
 
     @staticmethod
@@ -79,7 +83,7 @@ class ApiClient:
         Access Token.
         """
         response = requests.get(
-            ApiEndpoints.USER_REPOS.value+"?affiliation=owner&sort=pushed",
+            ApiEndpoints.USER_REPOS+"?affiliation=owner&sort=pushed",
             headers={
                 "Accept": "application/json",
                 "Authorization": f"Bearer {user_token}",

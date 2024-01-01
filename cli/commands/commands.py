@@ -1,5 +1,5 @@
-from cli.base import Cli
-from cli.commands_types import CliCommandsTypes
+from interface.base import Cli
+from enums.commands_types import CliCommandsTypes
 
 from tabulate import tabulate
 

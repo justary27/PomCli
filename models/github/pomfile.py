@@ -1,29 +1,23 @@
-import base64
+from interface.basefile import BaseFile
 
 
-class PomFile:
+class PomFile(BaseFile):
     """
     Model class for a pom.xml file obtained from a GitHub repository.
     """
 
     def __init__(self, name:str, path:str, url:str) -> None:
         self.name = name
-        self.path = path
         self.url = url
-    
-    def set_decoded_data(self, data:str) -> None:
-        """
-        Decodes the base64 encoded data string of pom.xml file from 
-        GitHub to a normal utf-8 encoded one.
-        """
-        self.bytes_data = data
-        self.decoded_data = base64.b64decode(self.bytes_data).decode("utf-8")
+        self.path = path
+        self.FILE_EXTENSION = '.xml'
 
     def get_dependencies(self, data:str) -> list:
         """
         Print dependencies list in the instance of pom.xml file
         """
-        self.set_decoded_data(data)
+
+        self.set_data(data)
 
         dependencies = []
 

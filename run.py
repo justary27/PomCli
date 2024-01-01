@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
-from cli import pom_cli
+from cli import PomCli
 
-pom_cli.run()
+if __name__ == "__main__":
+    pom_cli = PomCli("1.0.0")
+    pom_cli.run()

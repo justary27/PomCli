@@ -4,9 +4,10 @@ from datetime import datetime
 
 from dotenv import load_dotenv
 
-from cli.github.pomfile import PomFile
-from cli.github.api_client import ApiClient
-from cli.github.repository import Repository
+from models.github.pomfile import PomFile
+from api.github_api import GitHubApiClient
+from models.github.repository import Repository
+
 
 class GitHubClient:
     """
@@ -32,7 +33,7 @@ class GitHubClient:
     def login(self):
         deviceResponse = None
         try:
-            deviceResponse = ApiClient.request_device_code(self.client_id)
+            deviceResponse = GitHubApiClient.request_device_code(self.client_id)
 
             if deviceResponse is not None:
                 device_code = deviceResponse["device_code"]
@@ -56,7 +57,7 @@ class GitHubClient:
             reposResponse = None
 
             try:
-                reposResponse = ApiClient.get_all_user_repositories(self.user_token)
+                reposResponse = GitHubApiClient.get_all_user_repositories(self.user_token)
 
                 if reposResponse is not None:
                     self.repositories = reposResponse
@@ -76,7 +77,7 @@ class GitHubClient:
             fileResponse = None
 
             try:
-                fileResponse = ApiClient.get_all_repo_pomfiles(self.user_token, self.current_repo.url+"/contents")
+                fileResponse = GitHubApiClient.get_all_repo_pomfiles(self.user_token, self.current_repo.url+"/contents")
                 
                 if fileResponse is not None:
                     self.pom_files = fileResponse
@@ -89,7 +90,7 @@ class GitHubClient:
         self.current_pomfile = self.pom_files[file_index]
         print(f"\033[92mYou've entered the file: {self.pom_files[file_index].path}\033[0m")
 
-        return self.current_pomfile.get_dependencies(ApiClient.get_pomfile_contents(self.user_token, self.current_pomfile.url))
+        return self.current_pomfile.get_dependencies(GitHubApiClient.get_pomfile_contents(self.user_token, self.current_pomfile.url))
 
     def logout(self) -> bool:
         if self.authenticated:
@@ -115,7 +116,7 @@ class GitHubClient:
         poll = True
 
         while poll:
-            tokenResonse = ApiClient.request_user_token(
+            tokenResonse = GitHubApiClient.request_user_token(
                 client_id, 
                 device_code
             )

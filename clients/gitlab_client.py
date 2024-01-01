@@ -1,0 +1,2 @@
+class GitLabClient:
+    pass

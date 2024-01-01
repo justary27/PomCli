@@ -143,3 +143,4 @@ pom_cli/
 
 *.local.*
 *.pem
+test.json

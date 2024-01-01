@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from cli.github.client import GitHubClient
+from clients.github_client import GitHubClient
 
 class Cli(ABC):
     """

@@ -1,25 +1,26 @@
 import os
 
-from .github import client
+from clients import github_client
+from enums.commands_types import CliCommandsTypes
 
-from cli.base import Cli
-from cli.commands import CliCommands
-from cli.commands_types import CliCommandsTypes
+from interface.base import Cli
+from .commands.commands import CliCommands
+
 
 class PomCli(Cli):
     """
     A pom.xml CLI parser for your GitHub repos.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, version) -> None:
         self.NAME = "PomCli"
-        self.VERSION = "1.0.0"
+        self.VERSION = version
         self.RUNNING = True
 
         self.prev_stage = [""]
         self.stage = ""
 
-        self.github_client = client.GitHubClient()
+        self.github_client = github_client.GitHubClient()
         self.authenticated = self.github_client.authenticated
 
         self.commands = CliCommands(self)
@@ -77,5 +78,3 @@ class PomCli(Cli):
     def reset_stage(self):
         self.stage = self.prev_stage[-1]
         self.prev_stage.pop()
-
-pom_cli = PomCli()
